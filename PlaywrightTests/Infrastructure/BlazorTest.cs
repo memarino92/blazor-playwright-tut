@@ -16,10 +16,7 @@ public class BlazorTest : PageTest
     [SetUp]
     public async Task SetUpWebApplication()
     {
-        string[] args = new string[1];
-        args[0] = "--urls=http://localhost:5678/";
-
-        _host = BuildTestHost2(args);
+        _host = BuildTestHost();
 
         await _host.StartAsync();
 
@@ -28,35 +25,13 @@ public class BlazorTest : PageTest
             .Addresses.Single());
     }
 
-    public static IHost BuildWebHost(string[]? args = default)
-        => Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(builder =>
-            {
-                builder.UseStaticWebAssets();
-                builder.UseStartup<Startup>();
-                //builder.UseUrls("http://localhost:5432/");
-            })
-            .Build();
-
     public static IHost BuildTestHost(string[]? args = default)
         => Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(builder =>
             {
                 builder.UseStaticWebAssets();
-                builder.UseStartup<TestStartup>();
-                builder.UseContentRoot(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "..", "BlazorApp", "wwwroot"));
-                //builder.UseUrls("http://localhost:5432/");
-            })
-            .Build();
-
-    public static IHost BuildTestHost2(string[]? args = default)
-        => Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(builder =>
-            {
-                builder.UseStaticWebAssets();
                 builder.UseStartup<Startup>();
-                //builder.UseContentRoot(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "..", "BlazorApp", "wwwroot"));
-                //builder.UseUrls("http://localhost:5432/");
+                builder.UseUrls("http://localhost:5432/");
             })
             .ConfigureTestConfiguration()
             .Build();
