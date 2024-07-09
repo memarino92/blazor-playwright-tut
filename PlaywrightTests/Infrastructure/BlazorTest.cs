@@ -11,6 +11,8 @@ using PlaywrightTests.Infrastructure;
 public class BlazorTest : PageTest
 {
     private IHost? _host;
+
+    private const string _url = "http://localhost:5432/";
     protected Uri RootUri { get; private set; } = default!;
 
     [SetUp]
@@ -20,9 +22,7 @@ public class BlazorTest : PageTest
 
         await _host.StartAsync();
 
-        RootUri = new(_host.Services.GetRequiredService<IServer>().Features
-            .GetRequiredFeature<IServerAddressesFeature>()
-            .Addresses.Single());
+        RootUri = new(_url);
     }
 
     public static IHost BuildTestHost(string[]? args = default)
@@ -31,7 +31,7 @@ public class BlazorTest : PageTest
             {
                 builder.UseStaticWebAssets();
                 builder.UseStartup<Startup>();
-                builder.UseUrls("http://localhost:5432/");
+                builder.UseUrls(_url);
             })
             .ConfigureTestConfiguration()
             .Build();
