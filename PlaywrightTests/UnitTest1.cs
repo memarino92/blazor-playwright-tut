@@ -1,5 +1,4 @@
 using Microsoft.Playwright;
-using BlazorApp;
 
 namespace PlaywrightTests;
 

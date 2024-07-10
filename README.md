@@ -9,6 +9,14 @@ THDW:
 5. ??
 6. Profit
 
+To respect the runsettings file when running tests from the cli, pass in the path to the runsettings file like so:
+
+```sh
+dotnet test --settings:.runsettings
+```
+
+Make sure you are running from the root of the project, not the root of the solution.
+
 References:
 
 [Scott Hanselman's Blog](https://www.hanselman.com/blog/updating-to-net-8-updating-to-ihostbuilder-and-running-playwright-tests-within-nunit-headless-or-headed-on-any-os)

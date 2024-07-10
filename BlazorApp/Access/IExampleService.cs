@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlazorApp.Access
+﻿namespace BlazorApp.Access;
+public interface IExampleService
 {
-    public interface IExampleService
-    {
-        string GetMessage();
-    }
+    string GetMessage();
 }

@@ -1,7 +1,6 @@
-﻿namespace BlazorApp.Access
+﻿namespace BlazorApp.Access;
+public class ExampleService : IExampleService
 {
-    public class ExampleService : IExampleService
-    {
-        public string GetMessage() => "This is an example messasge";
-    }
+    public string GetMessage() => "This is an example message";
 }
+
